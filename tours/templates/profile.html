@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        body {
+            background-color: #f5f6fa;
+            padding: 0;
+            margin: 0 auto;
+            font-family: 'Georgia', serif;
+        }
+        .header {
+            width: 98%;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: .2rem solid #ddd;
+        }
+        h2 {
+            text-align: center;
+            color: #555;
+            font-size: 30px;
+            font-weight: normal;
+        }
+        .container button{
+            margin-left: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 30px;
+            border-radius: 3px;
+        }
+        .container button:hover{
+            opacity:.6;
+            background-color: #0056b3;
+        }
+        .div{
+            display: block;
+        }
+        .container {
+            margin: 10px;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .navbar {
+            display: flex;
+            color: #333;
+            font-size: 20px;
+        }
+        .navbar a {
+            color: #555;
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            border-radius: 3px;
+        }
+        .profile {
+            max-width: 500px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .profile h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .profile p {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h2>
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Jorab_LOGO1024_1.png"
+                alt="Logo">
+            Jorab Travel & Tours
+        </h2>
+        <nav class="navbar">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'about' %}">Help</a>
+            <a href="{% url 'profile' %}"><i class="fas fa-user"></i></a>
+        </nav>
+    </header>
+    <div class="profile">
+        <h1>Welcome, {{ username }}</h1>
+        <div class="container">
+            <p>Email: <span id="email">{{ email }}</span> <button onclick="editEmail()">Edit</button></p>
+        </div>
+        <div class="container">
+            <p>Username: <span id="username">{{ username }}</span> <button onclick="editUsername()">Edit</button></p>
+        </div>
+        <div class="container">
+            <form method="post" action="{% url 'reset_password' %}">
+                {% csrf_token %}
+                <p>New Password: <input type="password" name="new_password"></p>
+                <button type="submit">Reset Password</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function editEmail() {
+            let emailField = document.getElementById("email");
+            let newEmail = prompt("Enter new:",emailField.textContent);
+            if (newEmail !== null && newEmail.trim() !== "") {
+                emailField.textContent = newEmail.trim();
+            }
+        }
+        function editUsername(){
+            let usernameField = document.getElementById("username");
+            let newUsername = prompt("Enter new username:", usernameField.textContent);
+            if (newUsername !== null && newUsername.trim() !== "") {
+                usernameField.textContent= newUsername.trim();
+            }
+        }
+        function editPassword(){
+            alert('Not implemented yet');
+        }
+    </script>
+</body>
+</html>

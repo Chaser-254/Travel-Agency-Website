@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: indigo;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 150px;
+        }
+
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 50px;
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: large;
+            border: 20px;
+            padding: 10px;
+            font-weight: normal;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bolder;
+            font-size: 12px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 50%;
+            padding: 10px;
+            background-color: forestgreen;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+        input[type="submit"]:hover {
+            background-color: forestgreen;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-top: 10px;
+        }
+        .register-link{
+            text-align: center;
+            font-size:12px;
+            font-weight: bolder;
+        }
+        .register-link a{
+            text-decoration: none;
+            color: forestgreen;
+        }
+        .register-link a:hover{
+            text-decoration: none;
+        }
+        .footer{
+            text-align: center;
+            margin-top: 50px;
+            background-color: white;
+            padding: 8px;
+            background-color: whitesmoke;
+            font-size: smaller;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Jorab_LOGO1024_1.png"
+                        alt="Logo">
+            </div>
+        {% if messages %}
+            {% for message in messages %}
+                <p class="error-message">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <label for="password">Password Confirmation:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <input type="submit" value="Sign Up">
+        </form>
+        <p class="register-link">Don't have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+    <div class="footer">
+        &copy; 2023 Jorab Travel & Tours. All rights reserved. 
+    </div>
+</body>
+</html>

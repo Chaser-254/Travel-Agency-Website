@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/abe6c69d0a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: url("https://images.unsplash.com/photo-1485171856501-142ee5202006?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=874&q=80");
+        }
+
+        .header {
+            background-color: white;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .profile-section {
+            padding: 30px;
+            text-align: center;
+          }
+      
+          .profile-section h2 {
+            color: black;
+            font-size: 24px;
+          }
+      
+          .profile-section p {
+            color: gray;
+            font-size: 16px;
+          }
+          
+
+        h2 {
+            text-align: center;
+            color: black;
+            font-size: 20px;
+        }
+        .profile-section img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px 0;
+          }
+      
+          .profile-section a {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+          }
+          .profile-section a:hover {
+            background-color: darkgreen;
+          }
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 25px;
+        }
+
+        .navbar {
+            display: flex;
+            color: black;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 15px;
+        }
+        .navbar.active {
+            display: flexbox;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+          }
+
+        .navbar a.active {
+            color: black;
+        }
+
+        .navbar a:hover {
+            color: aqua;
+        }
+        .menu-icon {
+            width: 30px;
+            display: block;
+            color: black;
+            margin-top: 20px;
+        }
+
+        .contact {
+            background-color: url("https://images.unsplash.com/photo-1485171856501-142ee5202006?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=874&q=80");
+            padding: 30px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .contact h2 span {
+            color: #333;
+        }
+
+        .contact-icons {
+            margin-top: 20px;
+        }
+
+        .contact-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 20px;
+            color: #25d366;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .contact-icons a:hover {
+            color: darkgreen;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+            color: black;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .contact-info p span {
+            font-weight: bold;
+            color: black;
+        }
+
+        .footer {
+            background-color: white;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 16px;
+            margin-top: 230px;
+        }
+
+        .footer p {
+            margin: 0;
+            color: black;
+        }
+        @media only screen and (max-width: 768px) {
+            .menu-icon {
+              display: block; 
+              font-size: 20px;
+              cursor: pointer;
+              text-decoration: none;
+            }
+          
+            .navbar {
+              display: contents;
+            }
+          
+            .navbar.active {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin-top: 20px;
+            }
+          }
+
+        @media only screen and (max-width: 768px) {
+            .services-box {
+                width: 100%;
+                margin: 10px;
+                max-width: none;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu-icon {
+                display: block;
+                padding-left: 250px;
+            }
+
+            .navbar {
+                display: none;
+            }
+
+            .navbar.active {
+                display: flex;
+                flex-direction:row;
+                align-items: right;
+                margin-top: 20px;
+            }
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 1200px) {
+            .services-box {
+                width: calc(50% - 40px);
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h2>
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Jorab_LOGO1024_1.png"
+                alt="Logo">
+            Jorab Travel & Tours
+        </h2>
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="navbar">
+            <a href="{% url 'home' %}" class="active">Home</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'about' %}">Help</a>
+            <a href="{% url 'profile' %}"><i class="fas fa-user"></i></a>
+
+        </nav>
+    </header>
+
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Us</span></h2>
+
+        <div class="contact-icons">
+            <a href="https://wa.me/254720652018" target="_blank"><img src="" alt=""><i class="fab fa-whatsapp fa-2x"></i>
+            <a href="mailto:jorabtravelagency@gmail.com" target="_blank"><i class="far fa-envelope" style="color: #DB4437; font-size: 40px;"></i></a>
+        </div>
+
+        <div class="contact-info">
+            <p>Need to talk to us?</p>
+            <p>We would be more than happy to help you.</p>
+            <p>Our Travel Consultants are 24/7 at your service.</p>
+            <p>
+                <span><Address style="font-size: large; font-weight: bolder; padding: 10px;">Address:</Address>Anchor Building, Room 305,<br> 3rd Floor, Eldoret, Kenya.</span>
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>&copy; 2023 Jorab Travel & Tours | All Rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuIcon = document.querySelector(".menu-icon");
+        const navbar = document.querySelector(".navbar");
+
+        menuIcon.addEventListener("click", () => {
+            navbar.classList.toggle("active");
+        });
+    </script>
+</body>
+
+</html>

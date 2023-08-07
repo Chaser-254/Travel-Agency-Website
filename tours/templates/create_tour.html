@@ -1,0 +1,219 @@
+<!-- create_tour.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Tour</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        /* Common styles for all devices */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: url("https://images.unsplash.com/photo-1473186578172-c141e6798cf4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=773&q=80");
+        }
+
+        .header {
+            background-color: white;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: black;
+            font-size: 20px;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 25px;
+        }
+
+        .navbar {
+            display: flex;
+            color: black;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .navbar.active {
+            display: flexbox;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .navbar a.active {
+            color: black;
+        }
+
+        .navbar a:hover {
+            color: aqua;
+        }
+
+        .menu-icon {
+            width: 30px;
+            display: block;
+            color: black;
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            padding: 20px;
+            justify-content: center;
+            width: 80%;
+        }
+
+        .form-group label {
+            display: grid;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 15px;
+            word-spacing: normal;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="datetime-local"] {
+            width: 100%;
+            padding: 20px;
+            outline: none;
+            border: 3px solid black;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            background-color: #4caf50;
+            color: #fff;
+            border: 2px solid black;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        @media only screen and (max-width: 768px) {
+            h1 {
+                padding-left: 0;
+            }
+            .form-group input[type="text"],
+            .form-group input[type="datetime-local"] {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navbar {
+                margin-top: 0;
+            }
+            h1 {
+                margin: 20px;
+            }
+            form {
+                padding: 10px;
+            }
+            .form-group input[type="text"],
+            .form-group input[type="datetime-local"] {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h2>
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Jorab_LOGO1024_1.png"
+                alt="Logo">
+            Jorab Travel & Tours
+        </h2>
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="navbar">
+            <a href="{% url 'home' %}" class="active">Home</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'about' %}">Help</a>
+            <a href="{% url 'profile' %}"><i class="fas fa-user"></i></a>
+        </nav>
+    </header>
+    <h1>Create Tour</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Name:</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Description:</label>
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.start_date.id_for_label }}">Start Date:</label>
+            {{ form.start_date }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.end_date.id_for_label }}">End Date:</label>
+            {{ form.end_date }}
+        </div>
+        <div class="form-group">
+            <button type="submit">Create Tour</button>
+        </div>
+    </form>
+    <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const navbar = document.querySelector('.navbar');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

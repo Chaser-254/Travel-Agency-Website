@@ -1,0 +1,6 @@
+<h1>Travels and Tours</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">submit</button>
+</form>

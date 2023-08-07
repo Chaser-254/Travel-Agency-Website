@@ -1,0 +1,8 @@
+{% for post in posts %}
+    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+    <p>{{ post.content }}</p>
+    <p>Author: {{ post.author }}</p>
+    <hr>
+{% empty %}
+    <p>No posts yet.</p>
+{% endfor %}

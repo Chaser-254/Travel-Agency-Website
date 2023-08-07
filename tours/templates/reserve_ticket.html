@@ -1,0 +1,209 @@
+<!-- reserve_ticket.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reserve Ticket</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #f1f1f1;
+        }
+
+        .header {
+            background-color: white;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        .profile-section {
+            padding: 30px;
+            text-align: center;
+          }
+      
+          .profile-section h2 {
+            color: black;
+            font-size: 24px;
+          }
+      
+          .profile-section p {
+            color: gray;
+            font-size: 16px;
+          }
+          
+
+        h2 {
+            text-align: center;
+            color: black;
+            font-size: 20px;
+        }
+        .profile-section img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px 0;
+          }
+      
+          .profile-section a {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+          }
+          .profile-section a:hover {
+            background-color: darkgreen;
+          }
+        .logo {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 25px;
+        }
+
+        .navbar {
+            display: flex;
+            color: black;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 15px;
+        }
+        .navbar.active {
+            display: flexbox;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+          }
+
+        .navbar a.active {
+            color: black;
+        }
+
+        .navbar a:hover {
+            color: aqua;
+        }
+        .menu-icon {
+            width: 30px;
+            display: block;
+            color: black;
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: black;
+            align-items: center;
+            padding-left: 350px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .form-group label {
+            display: grid;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 15px;
+            word-spacing: normal;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="datetime-local"] {
+            width: 70%;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 50px;
+            
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            background-color: #4caf50;
+            color: #fff;
+            border: 2px solid black;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 20%;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h2>
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Jorab_LOGO1024_1.png"
+                alt="Logo">
+            Jorab Travel & Tours
+        </h2>
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="navbar">
+            <a href="{% url 'home' %}" class="active">Home</a>
+            <a href="{% url 'services' %}">Services</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'about' %}">Help</a>
+            <a href="{% url 'profile' %}"><i class="fas fa-user"></i></a>
+
+        </nav>
+    </header>
+    <h1>Reserve Ticket</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.airline_name.id_for_label }}">Airline Name:</label>
+            {{ form.airline_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.departure_date.id_for_label }}">Departure Date:</label>
+            {{ form.departure_date }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.arrival_date.id_for_label }}">Arrival Date:</label>
+            {{ form.arrival_date }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.destination.id_for_label }}">Destination:</label>
+            {{ form.destination }}
+        </div>
+        <div class="form-group">
+            <button type="submit">Reserve Ticket</button>
+        </div>
+    </form>
+</body>
+</html>

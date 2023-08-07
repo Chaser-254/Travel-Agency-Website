@@ -1,0 +1,101 @@
+<!-- book_appointment.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: black;
+            padding-left: 250px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .form-group label {
+            display: grid;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 15px;
+            word-spacing: normal;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="datetime-local"] {
+            width: 70%;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 50px;
+            
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+        .form-group textarea{
+            height: 200px;
+            width: 100%;
+            border: 2px solid black;
+            border-radius: 50px;
+        }
+
+        .form-group button {
+            background-color: #4caf50;
+            color: #fff;
+            border: 2px solid black;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 20%;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Embassy Booking & Preparation</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.embassy_name.id_for_label }}">Embassy Name:</label>
+            {{ form.embassy_name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.booking_date.id_for_label }}">Booking Date:</label>
+            {{ form.booking_date }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.preparation_notes.id_for_label }}">Preparation Notes:</label>
+            {{ form.preparation_notes }}
+        </div>
+        <div class="form-group">
+            <button type="submit">Book Appointment</button>
+        </div>
+    </form>
+</body>
+</html>
